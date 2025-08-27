@@ -36,38 +36,6 @@ getElement("cart-container").addEventListener("click", function (e) {
     getElement("copyButton").innerText = countBtn + 1;
   }
 });
-// function getElement(id) {
-//   return document.getElementById(id);
-// }
-
-// // Event delegation on the container
-// getElement("cart-container").addEventListener("click", function (e) {
-//   // Check if the clicked element is a copy button (or inside it)
-//   if (e.target.closest(".copy-button")) {
-//     const copyBtn = e.target.closest(".copy-button");
-
-//     // Find the parent card
-//     const card = copyBtn.closest(".cart");
-
-//     // Get the number text from the card
-//     const numberElement = card.querySelector("h1.text-3xl");
-//     const textToCopy = numberElement.innerText;
-
-//     // Copy to clipboard
-//     navigator.clipboard
-//       .writeText(textToCopy)
-//       .then(() => {
-//         alert(`Copied to clipboard: ${textToCopy}`);
-//       })
-//       .catch((err) => {
-//         console.error("Failed to copy!", err);
-//       });
-
-//     // Increment the copy counter
-//     const countBtn = Number(getElement("copyButton").innerText);
-//     getElement("copyButton").innerText = countBtn + 1;
-//   }
-// });
 
 // calling function
 getElement("cart-container").addEventListener("click", function (e) {
@@ -99,8 +67,6 @@ getElement("cart-container").addEventListener("click", function (e) {
     }
 
     getElement("coinCount").innerText = currentCoin;
-
-    // calling cart
 
     // createElement and append
     const historyContainer = getElement("history-container");

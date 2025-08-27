@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call Service</title>
+    <style>
+      .card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+      .call-history {
+        margin-top: 20px;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Coins: <span id="coinCount">100</span></h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Service A</h3>
+        <p>Number: 12345</p>
+        <button class="call-btn" data-name="Service A" data-number="12345">
+          Call
+        </button>
+      </div>
+      <div class="card">
+        <h3>Service B</h3>
+        <p>Number: 67890</p>
+        <button class="call-btn" data-name="Service B" data-number="67890">
+          Call
+        </button>
+      </div>
+    </div>
+
+    <div class="call-history">
+      <h3>Call History</h3>
+      <ul id="historyList"></ul>
+    </div>
+
+    <script>
+      let coins = 100;
+      const coinDisplay = document.getElementById("coinCount");
+      const historyList = document.getElementById("historyList");
+
+      document.querySelectorAll(".call-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          const serviceName = button.dataset.name;
+          const serviceNumber = button.dataset.number;
+
+          if (coins < 20) {
+            alert("Not enough coins to make a call!");
+            return;
+          }
+
+          // Deduct coins
+          coins -= 20;
+          coinDisplay.textContent = coins;
+
+          // Show call alert
+          alert(`Calling ${serviceName} at ${serviceNumber}`);
+
+          // Add to call history
+          const li = document.createElement("li");
+          li.textContent = `${serviceName} - ${serviceNumber}`;
+          historyList.appendChild(li);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -4,6 +4,7 @@ function getElement(id) {
   return element;
 }
 
+// heart function
 getElement("cart-container").addEventListener("click", function (e) {
   if (e.target.className.includes("heart-btn")) {
     const heartBtn = e.target;
@@ -11,11 +12,10 @@ getElement("cart-container").addEventListener("click", function (e) {
     const countBtn = getElement("heartCount").innerText;
     const count = Number(countBtn) + 1;
     getElement("heartCount").innerText = count;
-
-    console.log(countBtn);
   }
 });
 
+// calling function
 getElement("cart-container").addEventListener("click", function (e) {
   if (e.target.className.includes("call-button")) {
     const callBtn = e.target;
@@ -32,9 +32,24 @@ getElement("cart-container").addEventListener("click", function (e) {
     // const callIcon = callBtn.parentNode.children[1].children[0].src;
     // console.log(callIcon);
 
-    alert(`emergency-service-netlify.app says
-  Calling ${serviceName}${serviceNumber}..`);
+    const totalCoin = getElement("coinCount").innerText;
 
+    const currentCoin = Number(totalCoin) - 20;
+    if (currentCoin >= 0) {
+      alert(`emergency-service-netlify.app says
+Calling ${serviceName} ${serviceNumber}..`);
+    } else {
+      alert(
+        "You don’t have enough coins; it will cost 20 coins to make a call."
+      );
+      return;
+    }
+
+    getElement("coinCount").innerText = currentCoin;
+
+    // calling cart
+
+    // createElement and append
     const historyContainer = getElement("history-container");
 
     const div = document.createElement("div");
@@ -51,4 +66,11 @@ getElement("cart-container").addEventListener("click", function (e) {
               </div>`;
     historyContainer.append(div);
   }
+});
+
+// clear button
+
+document.getElementById("clear-button").addEventListener("click", function () {
+  const historyContainer = getElement("history-container");
+  historyContainer.innerHTML = "";
 });

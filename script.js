@@ -15,6 +15,60 @@ getElement("cart-container").addEventListener("click", function (e) {
   }
 });
 
+// copy function
+getElement("cart-container").addEventListener("click", function (e) {
+  if (e.target.className.includes("copy-button")) {
+    const copyBtn = e.target;
+
+    const numberElement =
+      copyBtn.parentNode.parentNode.children[2].children[0].innerText;
+
+    // copy to clipboard
+    navigator.clipboard
+      .writeText(numberElement)
+      .then(() => {
+        alert(`Copied to clipboard: ${numberElement}`);
+      })
+      .catch((err) => {
+        console.error("Failed to copy!", err);
+      });
+    const countBtn = Number(getElement("copyButton").innerText);
+    getElement("copyButton").innerText = countBtn + 1;
+  }
+});
+// function getElement(id) {
+//   return document.getElementById(id);
+// }
+
+// // Event delegation on the container
+// getElement("cart-container").addEventListener("click", function (e) {
+//   // Check if the clicked element is a copy button (or inside it)
+//   if (e.target.closest(".copy-button")) {
+//     const copyBtn = e.target.closest(".copy-button");
+
+//     // Find the parent card
+//     const card = copyBtn.closest(".cart");
+
+//     // Get the number text from the card
+//     const numberElement = card.querySelector("h1.text-3xl");
+//     const textToCopy = numberElement.innerText;
+
+//     // Copy to clipboard
+//     navigator.clipboard
+//       .writeText(textToCopy)
+//       .then(() => {
+//         alert(`Copied to clipboard: ${textToCopy}`);
+//       })
+//       .catch((err) => {
+//         console.error("Failed to copy!", err);
+//       });
+
+//     // Increment the copy counter
+//     const countBtn = Number(getElement("copyButton").innerText);
+//     getElement("copyButton").innerText = countBtn + 1;
+//   }
+// });
+
 // calling function
 getElement("cart-container").addEventListener("click", function (e) {
   if (e.target.className.includes("call-button")) {
@@ -36,8 +90,10 @@ getElement("cart-container").addEventListener("click", function (e) {
 
     const currentCoin = Number(totalCoin) - 20;
     if (currentCoin >= 0) {
-      alert(`emergency-service-netlify.app says
-Calling ${serviceName} ${serviceNumber}..`);
+      alert(
+        `emergency-service-netlify.app says 
+Calling ${serviceName} ${serviceNumber}..`
+      );
     } else {
       alert(
         "You don’t have enough coins; it will cost 20 coins to make a call."

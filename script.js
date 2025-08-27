@@ -90,10 +90,7 @@ getElement("cart-container").addEventListener("click", function (e) {
 
     const currentCoin = Number(totalCoin) - 20;
     if (currentCoin >= 0) {
-      alert(
-        `emergency-service-netlify.app says 
-Calling ${serviceName} ${serviceNumber}..`
-      );
+      alert(`Calling ${serviceName} ${serviceNumber}..`);
     } else {
       alert(
         "You don’t have enough coins; it will cost 20 coins to make a call."
